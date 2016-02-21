@@ -12,7 +12,7 @@
           <parent link="${parent}"/>
           <child link="head_y_link"/>
           <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.0" />
+          <dynamics damping="0.1" friction="0.1" />
         </joint> 
         <xacro:insert_transmission name="head_y" />
 
@@ -33,11 +33,7 @@
       	    <material name="grey"/>
     	  </visual>
 
-          <inertial>
-      	    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      	    <mass value="1.0"/>
-      	    <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" /> 
-    	  </inertial>
+          <xacro:inertial_cuboid_macro mass="0.2" x_length="0.040" y_length="0.100" z_length="0.050" />
         </link>
 
 	<!-- head pitch joint -->
@@ -47,7 +43,7 @@
           <parent link="head_y_link"/>
           <child link="head_p_link"/>
           <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.0" />
+          <dynamics damping="0.1" friction="0.1" />
         </joint> 
         <xacro:insert_transmission name="head_p" />
 
@@ -68,11 +64,9 @@
       	    <material name="grey"/>
     	  </visual>
 
-          <inertial>
-      	    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      	    <mass value="1.0"/>
-      	    <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" /> 
-    	  </inertial>
+          <xacro:inertial_cuboid_with_pose_macro mass="1.0" x_length="0.110" y_length="0.130" z_length="0.150">
+	    <origin xyz="0 0.050 0.050" rpy="0 0 0"/>
+	  </xacro:inertial_cuboid_with_pose_macro>
         </link>
 
 	<!-- camera joint -->

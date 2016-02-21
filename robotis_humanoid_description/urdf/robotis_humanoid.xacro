@@ -70,7 +70,7 @@
     <origin xyz="0 0 0.1705" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
     <limit velocity="6.5" effort="1000" lower="${-pi*0.6}" upper="${pi*0.6}" />
-    <dynamics damping="0.1" friction="0.0" />
+    <dynamics damping="0.1" friction="0.1" />
   </joint>
   <xacro:insert_transmission name="torso_y" />
   
