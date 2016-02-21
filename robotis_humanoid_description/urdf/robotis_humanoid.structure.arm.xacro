@@ -11,10 +11,11 @@
           <origin xyz="0.0 0.152 0.16" rpy="0 0 0"/>
           <parent link="${parent}"/>
           <child link="l_arm_sh_p1_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_medium_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_sh_p1" />
+        <xacro:effort_transmission name="l_arm_sh_p1" servo="H54-100-S500" />
 
 	<!-- left shoulder pitch 1 link -->
         <link name="l_arm_sh_p1_link">
@@ -47,10 +48,11 @@
           <origin xyz="0.057 0.060 -0.039" rpy="0 0 0"/>
           <parent link="l_arm_sh_p1_link"/>
           <child link="l_arm_sh_r_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.3}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.3}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_medium_servo_limits_macro lower="${-pi*0.3}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_sh_r" />
+        <xacro:effort_transmission name="l_arm_sh_r" servo="H54-100-S500" />
 
 	<!-- left shoulder roll link -->
         <link name="l_arm_sh_r_link">
@@ -83,10 +85,11 @@
           <origin xyz="-0.057 0.033 0.0" rpy="0 0 0"/>
           <parent link="l_arm_sh_r_link"/>
           <child link="l_arm_sh_p2_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_medium_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_sh_p2" />
+        <xacro:effort_transmission name="l_arm_sh_p2" servo="H54-100-S500" />
 
 	<!-- left shoulder pitch2 link -->
         <link name="l_arm_sh_p2_link">
@@ -119,10 +122,11 @@
           <origin xyz="0.030 0.187 0.057" rpy="0 0 0"/>
           <parent link="l_arm_sh_p2_link"/>
           <child link="l_arm_el_y_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.4}" upper="${pi*0.4}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.4}" upper="${pi*0.4}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_medium_servo_limits_macro lower="${-pi*0.4}" upper="${pi*0.4}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_el_y" />
+        <xacro:effort_transmission name="l_arm_el_y" servo="H54-100-S500" />
 
 	<!-- left elbow yaw link -->
         <link name="l_arm_el_y_link">
@@ -155,10 +159,11 @@
           <origin xyz="0.171 0.030 -0.057" rpy="0 0 0"/>
           <parent link="l_arm_el_y_link"/>
           <child link="l_arm_wr_r_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_wr_r" />
+        <xacro:effort_transmission name="l_arm_wr_r" servo="H42-20-S300" />
 
 	<!-- left wrist roll link -->
         <link name="l_arm_wr_r_link">
@@ -191,10 +196,11 @@
           <origin xyz="0.039 0.0 0.045" rpy="0 0 0"/>
           <parent link="l_arm_wr_r_link"/>
           <child link="l_arm_wr_y_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.45}" upper="${pi*0.45}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_wr_y" />
+        <xacro:effort_transmission name="l_arm_wr_y" servo="H42-20-S300" />
 
 	<!-- left wrist yaw link -->
         <link name="l_arm_wr_y_link">
@@ -227,10 +233,11 @@
           <origin xyz="0.045 -0.045 -0.045" rpy="0 0 0"/>
           <parent link="l_arm_wr_y_link"/>
           <child link="l_arm_wr_p_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.45}" upper="${pi*0.45}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_wr_p" />
+        <xacro:effort_transmission name="l_arm_wr_p" servo="H42-20-S300" />
 
 	<!-- left wrist pitch link -->
         <link name="l_arm_wr_p_link">
@@ -263,10 +270,11 @@
           <origin xyz="0.0877 0.0583 0.0" rpy="0 0 0"/>
           <parent link="l_arm_wr_p_link"/>
           <child link="l_arm_grip_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.45}" upper="${pi*0.45}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_grip" />
+        <xacro:effort_transmission name="l_arm_grip" servo="H42-20-S300" />
 
 	<!-- left arm gripper link -->
         <link name="l_arm_grip_link">
@@ -299,10 +307,11 @@
           <origin xyz="0.0877 0.0317 0.0" rpy="0 0 0"/>
           <parent link="l_arm_wr_p_link"/>
           <child link="l_arm_grip_1_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.45}" upper="${pi*0.45}" />
         </joint> 
-        <xacro:insert_transmission name="l_arm_grip_1" />
+        <xacro:effort_transmission name="l_arm_grip_1" servo="H42-20-S300" />
 
 	<!-- left arm gripper 1 link -->
         <link name="l_arm_grip_1_link">
@@ -370,10 +379,11 @@
           <origin xyz="0.0 -0.152 0.16" rpy="0 0 0"/>
           <parent link="${parent}"/>
           <child link="r_arm_sh_p1_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_medium_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_sh_p1" />
+        <xacro:effort_transmission name="r_arm_sh_p1" servo="H54-100-S500" />
 
 	<!-- right shoulder pitch 1 link -->
         <link name="r_arm_sh_p1_link">
@@ -406,10 +416,11 @@
           <origin xyz="0.057 -0.060 -0.039" rpy="0 0 0"/>
           <parent link="r_arm_sh_p1_link"/>
           <child link="r_arm_sh_r_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.3}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.3}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_medium_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.3}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_sh_r" />
+        <xacro:effort_transmission name="r_arm_sh_r" servo="H54-100-S500" />
 
 	<!-- right shoulder roll link -->
         <link name="r_arm_sh_r_link">
@@ -442,10 +453,11 @@
           <origin xyz="-0.057 -0.033 0.0" rpy="0 0 0"/>
           <parent link="r_arm_sh_r_link"/>
           <child link="r_arm_sh_p2_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_medium_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_sh_p2" />
+        <xacro:effort_transmission name="r_arm_sh_p2" servo="H54-100-S500" />
 
 	<!-- right shoulder pitch2 link -->
         <link name="r_arm_sh_p2_link">
@@ -478,10 +490,11 @@
           <origin xyz="0.030 -0.187 0.057" rpy="0 0 0"/>
           <parent link="r_arm_sh_p2_link"/>
           <child link="r_arm_el_y_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.4}" upper="${pi*0.4}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.4}" upper="${pi*0.4}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_medium_servo_limits_macro lower="${-pi*0.4}" upper="${pi*0.4}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_el_y" />
+        <xacro:effort_transmission name="r_arm_el_y" servo="H54-100-S500" />
 
 	<!-- right elbow yaw link -->
         <link name="r_arm_el_y_link">
@@ -514,10 +527,11 @@
           <origin xyz="0.171 -0.030 -0.057" rpy="0 0 0"/>
           <parent link="r_arm_el_y_link"/>
           <child link="r_arm_wr_r_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_wr_r" />
+        <xacro:effort_transmission name="r_arm_wr_r" servo="H42-20-S300" />
 
 	<!-- right wrist roll link -->
         <link name="r_arm_wr_r_link">
@@ -550,10 +564,11 @@
           <origin xyz="0.039 0.0 0.045" rpy="0 0 0"/>
           <parent link="r_arm_wr_r_link"/>
           <child link="r_arm_wr_y_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.45}" upper="${pi*0.45}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_wr_y" />
+        <xacro:effort_transmission name="r_arm_wr_y" servo="H42-20-S300" />
 
 	<!-- right wrist yaw link -->
         <link name="r_arm_wr_y_link">
@@ -586,10 +601,11 @@
           <origin xyz="0.045 0.045 -0.045" rpy="0 0 0"/>
           <parent link="r_arm_wr_y_link"/>
           <child link="r_arm_wr_p_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.45}" upper="${pi*0.45}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_wr_p" />
+        <xacro:effort_transmission name="r_arm_wr_p" servo="H42-20-S300" />
 
 	<!-- right wrist pitch link -->
         <link name="r_arm_wr_p_link">
@@ -622,10 +638,11 @@
           <origin xyz="0.0877 -0.0583 0.0" rpy="0 0 0"/>
           <parent link="r_arm_wr_p_link"/>
           <child link="r_arm_grip_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.45}" upper="${pi*0.45}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_grip" />
+        <xacro:effort_transmission name="r_arm_grip" servo="H42-20-S300" />
 
 	<!-- right arm gripper link -->
         <link name="r_arm_grip_link">
@@ -658,10 +675,11 @@
           <origin xyz="0.0877 -0.0317 0.0" rpy="0 0 0"/>
           <parent link="r_arm_wr_p_link"/>
           <child link="r_arm_grip_1_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.45}" upper="${pi*0.45}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.45}" upper="${pi*0.45}" />
         </joint> 
-        <xacro:insert_transmission name="r_arm_grip_1" />
+        <xacro:effort_transmission name="r_arm_grip_1" servo="H42-20-S300" />
 
 	<!-- right arm gripper link -->
         <link name="r_arm_grip_1_link">

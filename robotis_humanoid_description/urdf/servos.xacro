@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">	
+
+  <xacro:macro name="joint_small_servo_limits_macro" params="lower upper">
+    <limit effort="6.3" lower="${lower}" upper="${upper}" velocity="3.120648699"/>
+    <dynamics damping="1.3769" friction="2.285"/>
+  </xacro:macro>    
+  
+  <xacro:macro name="joint_medium_servo_limits_macro" params="lower upper">
+    <limit effort="24.8" lower="${lower}" upper="${upper}" velocity="3.1520646255"/>
+    <dynamics damping="1.3769" friction="2.285"/>
+  </xacro:macro>    
+
+  <xacro:macro name="joint_large_servo_limits_macro" params="lower upper">
+    <limit effort="44.2" lower="${lower}" upper="${upper}" velocity="2.9216811645"/>
+    <dynamics damping="1.3769" friction="2.285"/>
+  </xacro:macro>   
+
+</robot>

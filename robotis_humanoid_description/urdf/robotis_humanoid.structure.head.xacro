@@ -11,10 +11,11 @@
           <origin xyz="0.0 0.0 0.229" rpy="0 0 0"/>
           <parent link="${parent}"/>
           <child link="head_y_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="head_y" />
+        <xacro:effort_transmission name="head_y" servo="H42-20-S300" />
 
 	<!-- head yaw link -->
         <link name="head_y_link">
@@ -42,10 +43,11 @@
           <origin xyz="0.0 -0.045 0.039" rpy="0 0 0"/>
           <parent link="head_y_link"/>
           <child link="head_p_link"/>
-          <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
-          <dynamics damping="0.1" friction="0.1" />
+          <!--limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+          <dynamics damping="0.1" friction="0.1" /-->
+	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:insert_transmission name="head_p" />
+        <xacro:effort_transmission name="head_p" servo="H42-20-S300" />
 
 	<!-- head pitch link -->
         <link name="head_p_link">
