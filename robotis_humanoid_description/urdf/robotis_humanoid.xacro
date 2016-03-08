@@ -10,6 +10,7 @@
   <!-- Import Rviz colors -->
   <xacro:include filename="$(find robotis_humanoid_description)/urdf/materials.xacro" />
 
+  <xacro:include filename="$(find robotis_humanoid_description)/urdf/robotis_humanoid.structure.torso.xacro" />
   <xacro:include filename="$(find robotis_humanoid_description)/urdf/robotis_humanoid.structure.arm.xacro" />
   <xacro:include filename="$(find robotis_humanoid_description)/urdf/robotis_humanoid.structure.leg.xacro" />
   <xacro:include filename="$(find robotis_humanoid_description)/urdf/robotis_humanoid.structure.head.xacro" />
@@ -21,7 +22,7 @@
 
 
   <!-- Used for fixing robot -->
-<!--
+
   <link name="world">
   </link>
 
@@ -39,84 +40,79 @@
     <parent link="base"/>
     <child link="pelvis_link"/>
   </joint>
--->
-  <!-- pelvis_link -->
-  <link name="pelvis_link">
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="0.01 0.01 0.01" />
-      </geometry>
-    </collision>
 
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robotis_humanoid_description/meshes/robotis_pelvis_link.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="grey"/>
-    </visual>
 
-    <inertial>
-      <origin xyz="-0.011 0.000 0.058" rpy="0 0 0"/>
-      <mass value="6.869"/>
-      <!--inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" /-->
-      <inertia ixx="0.03603" ixy="0.0" ixz="0.00016" iyy="0.02210" iyz="0.0" izz="0.03830" />
-    </inertial>
-  </link>
-
-  <!-- torso yaw joint -->
-  <joint name="torso_y" type="revolute">
-    <parent link="pelvis_link"/>
-    <child link="chest_link"/>
-    <origin xyz="0 0 0.1705" rpy="0 0 0"/>
-    <axis xyz="0 0 1"/>
-    <!--limit velocity="6.5" effort="1000" lower="${-pi*0.6}" upper="${pi*0.6}" />
-    <dynamics damping="0.1" friction="0.1" /-->
-    <xacro:joint_medium_servo_limits_macro lower="${-pi*0.6}" upper="${pi*0.6}" />
-  </joint>
-  <xacro:effort_transmission name="torso_y" servo="H54-100-S500" />
+  <xacro:robotis_humanoid_torso />
   
-  <!-- chest_link -->
-  <link name="chest_link">
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="0.01 0.01 0.01" />
-      </geometry>
-    </collision>
+  <xacro:robotis_humanoid_arm parent="chest_link"
+    prefix="l"
+    reflect="1"
+    arm_joint_1_limit_lower="${-pi*0.5}"
+    arm_joint_1_limit_upper="${pi*0.5}"
+    arm_joint_2_limit_lower="${-pi*0.3}"
+    arm_joint_2_limit_upper="${pi*0.5}"
+      arm_joint_3_limit_lower="${-pi*0.5}"
+    arm_joint_3_limit_upper="${pi*0.5}"
+    arm_joint_4_limit_lower="${-pi*0.4}"
+    arm_joint_4_limit_upper="${pi*0.4}"
+    arm_joint_5_limit_lower="${-pi*0.5}"
+    arm_joint_5_limit_upper="${pi*0.5}" 
+    arm_joint_6_limit_lower="${-pi*0.45}" 
+    arm_joint_6_limit_upper="${pi*0.45}"
+    arm_joint_7_limit_lower="${-pi*0.45}" 
+    arm_joint_7_limit_upper="${pi*0.45}"
+  />
+  <xacro:robotis_humanoid_arm parent="chest_link"
+    prefix="r"
+    reflect="-1"
+    arm_joint_1_limit_lower="${-pi*0.5}"
+    arm_joint_1_limit_upper="${pi*0.5}"
+    arm_joint_2_limit_lower="${-pi*0.5}"
+    arm_joint_2_limit_upper="${pi*0.3}"
+    arm_joint_3_limit_lower="${-pi*0.5}"
+    arm_joint_3_limit_upper="${pi*0.5}"
+    arm_joint_4_limit_lower="${-pi*0.4}"
+    arm_joint_4_limit_upper="${pi*0.4}"
+    arm_joint_5_limit_lower="${-pi*0.5}"
+    arm_joint_5_limit_upper="${pi*0.5}" 
+    arm_joint_6_limit_lower="${-pi*0.45}" 
+    arm_joint_6_limit_upper="${pi*0.45}"
+    arm_joint_7_limit_lower="${-pi*0.45}" 
+    arm_joint_7_limit_upper="${pi*0.45}"
+  />
 
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robotis_humanoid_description/meshes/robotis_chest_link.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="grey"/>
-    </visual>
-
-    <inertial>
-      <origin xyz="-0.007 0.000 0.109" rpy="0 0 0"/>
-      <mass value="5.383"/>
-      <!--inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" /-->
-      <inertia ixx="0.04710" ixy="0.0" ixz="0.04710" iyy="0.02554" iyz="0.0" izz="0.03094" /> 
-    </inertial>
-  </link>
-
-  <!-- imu joint -->
-  <joint name="imu_fixed" type="fixed">
-    <parent link="pelvis_link"/>
-    <child link="imu_link"/>
-    <origin xyz="0.03 0 0.0" rpy="0 0 ${pi}"/>
-  </joint>
-
-  <link name="imu_link">
-  </link>
-  
-  <xacro:robotis_humanoid_l_arm parent="chest_link" />
-  <xacro:robotis_humanoid_r_arm parent="chest_link" />
-
-  <xacro:robotis_humanoid_l_leg parent="pelvis_link" />
-  <xacro:robotis_humanoid_r_leg parent="pelvis_link" />
+  <xacro:robotis_humanoid_leg parent="pelvis_link" 
+    prefix="l" 
+    reflect="1"
+    leg_joint_1_limit_lower="${-pi*0.45}"
+    leg_joint_1_limit_upper="${pi*0.45}"
+    leg_joint_2_limit_lower="${-pi*0.2}"
+    leg_joint_2_limit_upper="${pi*0.3}"
+    leg_joint_3_limit_lower="${-pi*0.4}"
+    leg_joint_3_limit_upper="${pi*0.4}"
+    leg_joint_4_limit_lower="${-pi*0.1}"
+    leg_joint_4_limit_upper="${pi*0.7}"
+    leg_joint_5_limit_lower="${-pi*0.45}"
+    leg_joint_5_limit_upper="${pi*0.45}"  
+    leg_joint_6_limit_lower="${-pi*0.5}" 
+    leg_joint_6_limit_upper="${pi*0.4}"
+  />
+  <xacro:robotis_humanoid_leg parent="pelvis_link"
+    prefix="r"
+    reflect="-1"
+    leg_joint_1_limit_lower="${-pi*0.45}"
+    leg_joint_1_limit_upper="${pi*0.45}"
+    leg_joint_2_limit_lower="${-pi*0.3}"
+    leg_joint_2_limit_upper="${pi*0.2}"
+    leg_joint_3_limit_lower="${-pi*0.4}"
+    leg_joint_3_limit_upper="${pi*0.4}"
+    leg_joint_4_limit_lower="${-pi*0.7}"
+    leg_joint_4_limit_upper="${pi*0.1}"
+    leg_joint_5_limit_lower="${-pi*0.45}"
+    leg_joint_5_limit_upper="${pi*0.45}"  
+    leg_joint_6_limit_lower="${-pi*0.4}" 
+    leg_joint_6_limit_upper="${pi*0.5}"
+  />
 
   <xacro:robotis_humanoid_head parent="chest_link" />
 

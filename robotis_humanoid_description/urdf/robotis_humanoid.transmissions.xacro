@@ -8,7 +8,7 @@
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 			</joint>
 			
-			<actuator name="${name}_${servo}_motor">
+			<actuator name="${servo}_motor">
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
@@ -19,11 +19,11 @@
 		<transmission name="${name}_tran">
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}">
-				<hardwareInterface>PositionJointInterface</hardwareInterface>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
 			</joint>
 			
-			<actuator name="${name}_${servo}_motor">
-				<hardwareInterface>PositionJointInterface</hardwareInterface>
+			<actuator name="${servo}_motor">
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
 		</transmission>

@@ -15,7 +15,7 @@
           <dynamics damping="0.1" friction="0.1" /-->
 	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:effort_transmission name="head_y" servo="H42-20-S300" />
+        <xacro:position_transmission name="head_y" servo="H42-20-S300" />
 
 	<!-- head yaw link -->
         <link name="head_y_link">
@@ -47,7 +47,7 @@
           <dynamics damping="0.1" friction="0.1" /-->
 	  <xacro:joint_small_servo_limits_macro lower="${-pi*0.5}" upper="${pi*0.5}" />
         </joint> 
-        <xacro:effort_transmission name="head_p" servo="H42-20-S300" />
+        <xacro:position_transmission name="head_p" servo="H42-20-S300" />
 
 	<!-- head pitch link -->
         <link name="head_p_link">
