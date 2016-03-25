@@ -19,11 +19,25 @@
 		<transmission name="${name}_tran">
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${name}">
-				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<hardwareInterface>PositionJointInterface</hardwareInterface>
 			</joint>
 			
 			<actuator name="${servo}_motor">
-				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<hardwareInterface>PositionJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+		</transmission>
+	</xacro:macro>
+
+	<xacro:macro name="velocity_transmission" params="name servo">
+		<transmission name="${name}_tran">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="${name}">
+				<hardwareInterface>VelocityJointInterface</hardwareInterface>
+			</joint>
+			
+			<actuator name="${servo}_motor">
+				<hardwareInterface>VelocityJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
 		</transmission>

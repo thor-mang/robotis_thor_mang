@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<!-- Revolute-Revolute Manipulator -->
 <robot name="robotis_humanoid" xmlns:xacro="http://www.ros.org/wiki/xacro">
   
   <!-- some parameters -->
@@ -20,9 +19,9 @@
 
   <xacro:include filename="$(find robotis_humanoid_description)/urdf/servos.xacro" />
 
+<macro name="robotis_humanoid_macro">
 
   <!-- Used for fixing robot -->
-
   <link name="world">
   </link>
 
@@ -51,7 +50,7 @@
     arm_joint_1_limit_upper="${pi*0.5}"
     arm_joint_2_limit_lower="${-pi*0.3}"
     arm_joint_2_limit_upper="${pi*0.5}"
-      arm_joint_3_limit_lower="${-pi*0.5}"
+    arm_joint_3_limit_lower="${-pi*0.5}"
     arm_joint_3_limit_upper="${pi*0.5}"
     arm_joint_4_limit_lower="${-pi*0.4}"
     arm_joint_4_limit_upper="${pi*0.4}"
@@ -115,5 +114,7 @@
   />
 
   <xacro:robotis_humanoid_head parent="chest_link" />
+
+</macro>
 
 </robot>
